@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mockito="http://www.mockito.org/spring/mockito"
+	xsi:schemaLocation="http://www.mockito.org/spring/mockito http://www.mockito.org/spring/mockito.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+	<aop:aspectj-autoproxy proxy-target-class="false" />
+
+	<!-- The Aspect for @Performance -->
+	<bean id="performance" class="oss.perform.core.PerformanceAspect">
+
+	</bean>
+
+	<!-- the PerformanceMonitor Impl -->
+	<mockito:mock id="perfmonmock" class="oss.perform.core.PerformanceMonitor"/>
+	
+	<!-- Pointcut declaration for monitoring without annotation -->
+	<aop:config proxy-target-class="false">
+		<aop:aspect ref="performance">
+			<aop:pointcut id="monitorWithoutAnnotation" expression="execution(public void oss.perform.core.test.MonitoredMock.nonAnnotatedWithCustomPointcut())" />
+			<aop:around pointcut-ref="monitorWithoutAnnotation" method="monitor" />
+		</aop:aspect>
+	</aop:config>
+
+
+	<bean id="mockService" class="oss.perform.core.test.MonitoredMock" />
+</beans>
