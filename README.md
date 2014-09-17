@@ -7,7 +7,7 @@ Feature list:
  * Annotation driven Aspect (@Performance) for easy monitoring of your managed beans
  * Fallback for configurable pointcut definition
  * Configurable, EL supported labels for your monitors (TODO)
- * Implementations for JAMon, Simon (TODO), Metrics (TODO), Logfile for use with Logstash and Kibana (TODO)
+ * Implementations for [JAMon](http://jamonapi.sourceforge.net/), Simon (TODO), Metrics (TODO), Logfile for use with Logstash and Kibana (TODO)
 
 ## How to use
 
