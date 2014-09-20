@@ -1,5 +1,6 @@
 package oss.perform.sysout;
 
+import oss.perform.core.MonitoredTarget;
 import oss.perform.core.PerformanceMonitor;
 
 public class SysoutPerformanceMonitor implements PerformanceMonitor {
@@ -8,15 +9,15 @@ public class SysoutPerformanceMonitor implements PerformanceMonitor {
 	private String label;
 
 	@Override
-	public void start(String label) {
-		this.label = label;
+	public void start(MonitoredTarget target) {
+		label = target.getTargetClass() + "#" + target.getTargetMethod() + "(..)";
 		start = System.currentTimeMillis();
 	}
 
 	@Override
 	public void stop() {
 		final long runtime = System.currentTimeMillis() - start;
-		System.out.println("PERFORMANCE::" + label + ": " + runtime + "[ms]");
+		System.out.println(label + ": " + runtime + "[ms]");
 	}
 
 }

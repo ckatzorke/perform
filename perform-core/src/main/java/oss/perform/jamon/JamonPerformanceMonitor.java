@@ -1,5 +1,6 @@
 package oss.perform.jamon;
 
+import oss.perform.core.MonitoredTarget;
 import oss.perform.core.PerformanceMonitor;
 
 import com.jamonapi.Monitor;
@@ -9,8 +10,8 @@ public class JamonPerformanceMonitor implements PerformanceMonitor {
 	private Monitor monitor;
 
 	@Override
-	public void start(String label) {
-		monitor = MonitorFactory.start(label);
+	public void start(MonitoredTarget target) {
+		monitor = MonitorFactory.start(target.getTargetClass() + "#" + target.getTargetMethod() + "(..)");
 	}
 
 	@Override

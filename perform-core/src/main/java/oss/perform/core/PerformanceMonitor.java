@@ -10,11 +10,11 @@ import org.springframework.context.ApplicationContext;
 public interface PerformanceMonitor {
 
 	/**
-	 * Start the monitor for this label (before invocation of target method)
+	 * Start the monitor for this {@link MonitoredTarget} (before invocation of target method)
 	 *
-	 * @param label
+	 * @param target
 	 */
-	void start(String label);
+	void start(MonitoredTarget target);
 
 	/**
 	 * Stop the monitor (after invocation of target method)

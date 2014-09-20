@@ -24,7 +24,6 @@ public class PerformanceAspect {
 
 	@Autowired
 	private ApplicationContext applicationContext;
-	private final String defaultLabel = "defaultTODODODODO";
 
 	/**
 	 * Aspect joinpoint for pointcuts <code>@Around("@annotation(performance)")</code>
@@ -36,7 +35,7 @@ public class PerformanceAspect {
 	 */
 	@Around("@annotation(performance)")
 	public Object monitorPerformance(ProceedingJoinPoint pjp, Performance performance) throws Throwable {
-		return monitor(pjp, performance.label());
+		return monitor(pjp, getTarget(pjp));
 	}
 
 	/**
@@ -48,18 +47,18 @@ public class PerformanceAspect {
 	 * @throws Throwable
 	 */
 	public Object monitor(ProceedingJoinPoint pjp) throws Throwable {
-		return monitor(pjp, defaultLabel);
+		return monitor(pjp, getTarget(pjp));
 	}
 
 	/**
 	 * @param jp
-	 * @param label
+	 * @param target
 	 * @return
 	 * @throws Throwable
 	 */
-	private Object monitor(ProceedingJoinPoint jp, String label) throws Throwable {
+	private Object monitor(ProceedingJoinPoint jp, MonitoredTarget target) throws Throwable {
 		final PerformanceMonitor performanceMonitor = applicationContext.getBean(PerformanceMonitor.class);
-		performanceMonitor.start(label);
+		performanceMonitor.start(target);
 		Object ret = null;
 		try {
 			ret = jp.proceed();
@@ -70,5 +69,11 @@ public class PerformanceAspect {
 		}
 		return ret;
 
+	}
+
+	private MonitoredTarget getTarget(ProceedingJoinPoint pjp) {
+		final MonitoredTarget target = new MonitoredTarget(pjp.getSignature().getDeclaringTypeName(), pjp.getSignature()
+				.getName());
+		return target;
 	}
 }

@@ -11,7 +11,7 @@
 
 	</bean>
 	<!-- the PerformanceMonitor Impl -->
-	<bean id="perfMonSysout" class="oss.perform.sysout.SysoutPerformanceMonitor" />
+	<bean id="perfMonSysout" class="oss.perform.sysout.SysoutPerformanceMonitor" scope="prototype" />
 	<!-- and a spy -->
 	<mockito:spy  beanName="perfMonSysout" />
 

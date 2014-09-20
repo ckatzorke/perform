@@ -8,13 +8,10 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation for marking a method to be performance-monitored.<br>
- * Contains the attributes {@link #label()} that will be used as identifier for this performance-monitor.<br>
- * The label can have EL arguments for referencing the target class and target method
  *
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @Documented
 public @interface Performance {
-	String label() default "";
 }

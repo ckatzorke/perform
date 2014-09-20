@@ -10,7 +10,7 @@ public class MonitoredMock {
 		Thread.sleep(100l);
 	}
 
-	@Performance(label = "test")
+	@Performance
 	public void annotatedMethodWithLabel() throws InterruptedException {
 		System.out.println("annotatedMethodWithLabel() Taking 100ms...");
 		Thread.sleep(100l);
