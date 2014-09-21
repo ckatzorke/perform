@@ -35,29 +35,8 @@ public class TestSysoutPerformanceMonitor {
 	@Test
 	public void testAnnotatedMethod() throws Exception {
 		mockService.annotatedMethod();
-		Mockito.verify(performanceMonitor, Mockito.times(1)).start(Mockito.any(MonitoredTarget.class));
+		Mockito.verify(performanceMonitor, Mockito.times(1)).start((MonitoredTarget) Mockito.any());
 		Mockito.verify(performanceMonitor, Mockito.times(1)).stop();
-		mockService.annotatedMethod();
-		mockService.annotatedMethod();
-		mockService.annotatedMethod();
-		mockService.annotatedMethod();
-		mockService.annotatedMethod();
-		mockService.annotatedMethod();
-	}
-
-	@Test
-	public void testAnnotatedMethodWithLabel() throws Exception {
-		mockService.annotatedMethodWithLabel();
-		Mockito.verify(performanceMonitor, Mockito.times(1)).start(Mockito.any(MonitoredTarget.class));
-		Mockito.verify(performanceMonitor, Mockito.times(1)).stop();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
-		mockService.annotatedMethodWithLabel();
 	}
 
 	@Test
@@ -65,12 +44,6 @@ public class TestSysoutPerformanceMonitor {
 		mockService.nonAnnotatedWithCustomPointcut();
 		Mockito.verify(performanceMonitor, Mockito.times(1)).start(Mockito.any(MonitoredTarget.class));
 		Mockito.verify(performanceMonitor, Mockito.times(1)).stop();
-		mockService.nonAnnotatedWithCustomPointcut();
-		mockService.nonAnnotatedWithCustomPointcut();
-		mockService.nonAnnotatedWithCustomPointcut();
-		mockService.nonAnnotatedWithCustomPointcut();
-		mockService.nonAnnotatedWithCustomPointcut();
-		mockService.nonAnnotatedWithCustomPointcut();
 	}
 
 	@Test
