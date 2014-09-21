@@ -8,7 +8,6 @@ Feature list:
  * Fallback for configurable pointcut definition
  * Implementations for [JAMon](http://jamonapi.sourceforge.net/), Simon (TODO), Metrics (TODO), Logfile for use with Logstash and Kibana (TODO)
  * Stackable support for sequence details (especially for request scope) TODO
-
 ## Modules overview
 
 ### perform-core

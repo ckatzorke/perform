@@ -8,12 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+<<<<<<< HEAD:perform-core/src/test/java/oss/perform/core/test/TestPerformanceMonitor.java
 import oss.perform.core.MonitoredTarget;
+=======
+>>>>>>> a4bff7e30655ed00b09b38b918c4c740f189bea9:perform-core/src/test/java/oss/perform/core/test/TestPerformanceMonitor.java
 import oss.perform.core.PerformanceMonitor;
 
 /**
  * Basic test using Mockito
+<<<<<<< HEAD:perform-core/src/test/java/oss/perform/core/test/TestPerformanceMonitor.java
  *
+=======
+ *
+>>>>>>> a4bff7e30655ed00b09b38b918c4c740f189bea9:perform-core/src/test/java/oss/perform/core/test/TestPerformanceMonitor.java
  * @author ckatzorke
  *
  */
